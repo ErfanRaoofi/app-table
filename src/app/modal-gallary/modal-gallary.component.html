@@ -1,0 +1,43 @@
+<body>
+
+    <h2 style="text-align:center">Lightbox</h2>
+
+    <div class="row">
+        <div class="column" *ngFor="let item of imgs">
+            <img src={{item.src}} style="width:100%" (click)="openModal();currentSlide(item.id)" class="hover-shadow cursor">
+        </div>
+        <!-- <div class="column">
+            <img src="../../assets/img/second.jpg" style="width:100%" (click)="openModal();currentSlide(2)" class="hover-shadow cursor">
+        </div>
+        <div class="column">
+            <img src="../../assets/img/third.jpg" style="width:100%" (click)="openModal();currentSlide(3)" class="hover-shadow cursor">
+        </div>
+        <div class="column">
+            <img src="../../assets/img/fourth.jpg" style="width:100%" (click)="openModal();currentSlide(4)" class="hover-shadow cursor">
+        </div> -->
+    </div>
+
+    <div id="myModal" class="modal">
+        <span class="close cursor" (click)="closeModal()">&times;</span>
+        <div class="modal-content">
+
+            <div #mySlides class="mySlides" *ngFor="let item of imgs">
+                <div class="numbertext">{{item.id}} / {{imageCount}}</div>
+                <img src={{item.src}} style="width:100%">
+            </div>
+
+            <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+            <a class="next" (click)="plusSlides(1)">&#10095;</a>
+
+            <div class="caption-container">
+                <p #caption id="caption"></p>
+            </div>
+
+
+            <div class="column" *ngFor="let item of imgs">
+                <img #demo class="demo cursor" src={{item.src}} style="width:100%" (click)="currentSlide(item.id)">
+            </div>
+
+        </div>
+    </div>
+</body>
