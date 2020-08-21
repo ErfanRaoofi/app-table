@@ -9,6 +9,7 @@ export class DesignModalPage implements OnInit {
   ngOnInit(): void {}
   scrollLengh: number;
   ScrollNewLengh: number;
+  ScrollNewLengh2: number;
   urls: any[] = [];
 
   @ViewChild('imageContainer', { read: ElementRef })
@@ -44,14 +45,8 @@ export class DesignModalPage implements OnInit {
     }
   }
 
-  removeImage(event) {
-    const b = this.urls.filter((e) => e === event);
-    b.forEach((f) =>
-      this.urls.splice(
-        this.urls.findIndex((e) => e === f),
-        1
-      )
-    );
+  removeImage(id) {
+    this.urls = this.urls.filter((c) => c.id !== id);
     setTimeout(() => {
       this.ScrollNewLengh = this.imageContainer.nativeElement.scrollWidth;
     }, 0);
@@ -112,8 +107,10 @@ export class DesignModalPage implements OnInit {
   imageCount;
 
   openModal() {
+    debugger;
     document.getElementById('myModal').style.display = 'block';
     this.imageCount = this.urls.length;
+    this.ScrollNewLengh2 = this.images.nativeElement.scrollWidth;
   }
 
   closeModal() {
@@ -152,5 +149,20 @@ export class DesignModalPage implements OnInit {
     }
     slides[this.slideIndex - 1].style.display = 'block';
     dots[this.slideIndex - 1].className += ' active';
+  }
+
+  @ViewChild('images') images;
+  modalScrollRight(): void {
+    this.images.nativeElement.scrollTo({
+      left: this.images.nativeElement.scrollLeft + 320,
+      behavior: 'smooth',
+    });
+  }
+
+  modalScrollLeft(): void {
+    this.images.nativeElement.scrollTo({
+      left: this.images.nativeElement.scrollLeft - 320,
+      behavior: 'smooth',
+    });
   }
 }

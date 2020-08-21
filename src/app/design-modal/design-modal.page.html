@@ -1,60 +1,74 @@
-<div class="body" style="height: 100vh; width: 100%; background-color: #f4f4f4; padding: 5em;">
+<div class="body">
     <div class="ax-galery-container">
         <div class="arrow-start">
             <ax-button *ngIf="scrollLengh < ScrollNewLengh" icon="fa fa-arrow-right" type="light" (click)="scrollRight()">
             </ax-button>
         </div>
-
         <div #imageContainer class="images-container">
             <div class="add-btn" (click)="fileInput.click()">
                 <input #fileInput type='file' (change)="onSelectFile($event)" multiple>
-                <i class="fas fa-plus"></i>
+                <!-- <img src="../../../../../../../../../CRS/src/assets/images/plus.svg" width="15%"> -->
+                <i class="fa fa-plus" aria-hidden="true" style="font-size: 25px; color: #9e9e9e;"></i>
             </div>
-            <div class="images" *ngFor='let url of urls let i = index;'>
+            <div class="images" *ngFor='let item of urls let i = index;'>
                 <div>
-                    <ax-button icon="fa fa-trash" type="danger outline" (click)="removeImage(url)"></ax-button>
-                    <ax-button icon="fas fa-check" type="success outline" (click)="openModal();currentSlide(i+1)"></ax-button>
+                    <ax-button icon="fa fa-trash" type="danger outline" (click)="removeImage(item.id)"></ax-button>
+                    <ax-button icon="fas fa-check" type="success outline"></ax-button>
+                    <ax-button icon="fas fa-search" type="dark outline" (click)="openModal();currentSlide(i+1)"></ax-button>
                 </div>
-                <img [src]="url.src">
+                <img [src]="item.src">
             </div>
         </div>
         <div class="arrow-end" (click)="scrollLeft()">
             <ax-button *ngIf="scrollLengh < ScrollNewLengh" icon="fa fa-arrow-left" type="light"></ax-button>
         </div>
     </div>
-</div>
-<div id="myModal" class="container">
-    <div class="slider">
-        <div class="next-slide">
-            <div class="close"></div>
-            <div class="next-btn">
-                <ax-button icon="fas fa-angle-left" (click)="plusSlides(-1)" type="dark" size="lg"></ax-button>
+    <div id="myModal" class="container">
+        <div class="slider">
+            <div class="next-slide">
+                <div class="close">
+                    <ax-button icon="fas fa-times" (click)="closeModal()" type="dark" size="lg"></ax-button>
+                </div>
+                <div class="next-btn">
+                    <ax-button icon="fas fa-angle-right" (click)="plusSlides(-1)" type="dark" size="lg"></ax-button>
+                </div>
             </div>
-        </div>
-        <div class="slide">
-            <div class="image">
-                <div class="mySlides" *ngFor='let url of urls let i = index;'>
-                    <img src={{url.src}}>
-                    <div class="count">
-                        {{i+1}} / {{imageCount}}
+            <div class="slide">
+                <div class="image">
+                    <div class="mySlides" *ngFor='let item of urls let i = index;'>
+                        <img src={{item.src}}>
+                        <div class="count">
+                            {{i+1}} / {{imageCount}}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="prv-slide">
-            <div class="close">
-                <ax-button icon="fas fa-times" (click)="closeModal()" type="dark" size="lg"></ax-button>
+            <div class="prv-slide">
+                <div class="close">
+
+                </div>
+                <div class="prv-btn">
+                    <ax-button icon="fas fa-angle-left" (click)="plusSlides(1)" type="dark" size="lg"></ax-button>
+                </div>
             </div>
-            <div class="prv-btn">
-                <ax-button icon="fas fa-angle-right" (click)="plusSlides(1)" type="dark" size="lg"></ax-button>
+        </div>
+        <div class="scroller">
+            <div class="next">
+                <ax-button *ngIf="scrollLengh < ScrollNewLengh2" icon="fas fa-angle-right" (click)="modalScrollRight()" type="dark" size="lg"></ax-button>
+            </div>
+
+            <div class="con">
+                <div class="img" #images>
+                    <div class="images" *ngFor='let item of urls let i = index;'>
+
+                        <img class="demo" src={{item.src}} (click)="currentSlide(i+1)">
+                    </div>
+                </div>
+            </div>
+            <div class="prv">
+                <ax-button *ngIf="scrollLengh < ScrollNewLengh2" icon="fas fa-angle-left" (click)="modalScrollLeft()" type="dark" size="lg"></ax-button>
             </div>
         </div>
     </div>
-    <div class="scroller">
 
-        <div class="img" *ngFor='let url of urls let i = index;'>
-            <img class="demo" src={{url.src}} (click)="currentSlide(i+1)">
-        </div>
-
-    </div>
 </div>
