@@ -1,0 +1,161 @@
+.ax-page-content {
+    .inner-content {
+        height: 100%;
+    }
+}
+
+.ax-toolbar-menu-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+.ax.nav-tabs li {
+    padding: 0.8em !important;
+}
+.lm_goldenlayout {
+    background: unset !important;
+
+    .lm_header {
+        .lm_controls {
+            & > li {
+                cursor: pointer;
+                float: left;
+                width: 18px;
+                height: 18px;
+                text-align: center;
+                top: 2px;
+            }
+        }
+
+        .lm_tabs {
+            .lm_tab {
+                background: var(--gray-color) !important;
+                color: #000 !important;
+                height: 18px !important;
+                -webkit-margin-start: 2px;
+                margin-inline-start: 2px;
+                margin-bottom: 2px;
+                border-top: 2px solid !important;
+                font-family: inherit;
+                border-color: #dbdbdb !important;
+
+                .lm_title {
+                    padding: 0 !important;
+                }
+            }
+
+            .lm_active {
+                background: var(--ax-white-color) !important;
+                color: var(--gray-fore-color) !important;
+                border-color: transparent !important;
+                border-top: 2px solid var(--ax-primary-color) !important;
+                border-left: 1px solid var(--ax-border-color) !important;
+                border-right: 1px solid var(--ax-border-color) !important;
+            }
+        }
+    }
+
+    .lm_content {
+        background: var(--ax-white-color) !important;
+    }
+}
+
+.ax.nav-menu.nav-center > li {
+    display: inline-flex !important;
+    height: 28px !important;
+    margin-inline-end: 0.5em !important;
+    border-radius: 4px !important;
+}
+
+.main-content .page-content-wrap .ax-page-content {
+    height: calc(100% - 75px) !important;
+}
+.popup-body .page-content-wrap {
+    margin-bottom: 0.5em;
+}
+
+.tab-page-content {
+    padding: var(--ax-size-sm);
+    height: 100%;
+}
+
+.ax.form-control.md {
+    height: 30px;
+}
+
+.ax-grid-toolbar {
+    .ax-toolbar {
+        border: 1px solid var(--ax-border-color) !important;
+        border-bottom: none !important;
+        background-color: var(--ax-primary-trans-dark-color) !important;
+        .title {
+            font-weight: bold;
+        }
+    }
+    .ax.form-control {
+        height: 30px;
+        padding: 6px 9px;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 16px;
+    }
+}
+
+.tab-strip-container li {
+    border-color: var(--ax-gray-color) !important;
+    padding: 0.5em 1em !important;
+    &.active {
+        background-color: var(--ax-gray-trans-light-color) !important;
+        border-color: var(--ax-primary-dark-color) !important;
+    }
+}
+.ax.nav-menu ul li {
+    color: #000;
+}
+
+.ax.form-item .content .input input {
+    &::-webkit-input-placeholder {
+        color: var(--ax-border-color) !important;
+    }
+
+    &:-ms-input-placeholder {
+        color: var(--ax-border-color) !important;
+    }
+
+    &::placeholder {
+        color: var(--ax-border-color) !important;
+    }
+}
+.popup-wrapper .popup-container .popup-body .ax-footer {
+    border-top: 1px solid !important;
+    padding: 0.4em 0.9em !important;
+}
+.ppoup-header {
+    font-weight: bold;
+}
+.ax.nav-tabs {
+    padding: 0.3em 0.5em 0 0.5em !important;
+    border-bottom: 0 !important;
+    background: var(--ax-white-color) !important;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    li {
+        background: var(--ax-white-color) !important;
+        border-bottom: 3px solid var(--ax-gray-color) !important;
+        border-radius: 0 !important;
+        &:hover {
+            background: var(--ax-light-trans-dark-color) !important;
+            color: var(--ax-gray-fore-color) !important;
+        }
+        &.active {
+            background: var(--ax-white-color) !important;
+            border-bottom: 3px solid var(--ax-primary-color) !important;
+            color: var(--ax-primary-color) !important;
+        }
+    }
+}

@@ -1,0 +1,324 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./ax-icon.scss";
+@import "./fonts.scss";
+// @import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+@import "./font-awesome.css";
+// @import "../../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+// @import "../../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css";
+// @import "../../node_modules/golden-layout/src/css/goldenlayout-base.css";
+// @import "../../node_modules/golden-layout/src/css/goldenlayout-light-theme.css";
+// @import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
+@import "../../node_modules/@acorex/styles/scss/style.scss";
+@import "./fixes.scss";
+body {
+    direction: rtl;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: IRANSans !important;
+    overflow: hidden;
+    font-size: 12px !important;
+    scrollbar-width: thin;
+}
+
+.rtl i {
+    -webkit-transform: scaleX(1) !important;
+    transform: scaleX(1) !important;
+}
+
+// overrid color
+:root {
+    --ax-primary-color: #4d7ee2 !important;
+    --ax-primary-dark-color: #4d7ee2 !important;
+    --ax-primary-light-color: #4d7ee2 !important;
+    --ax-primary-light-color: #4d7ee2 !important;
+    --ax-primary-trans-light-color: rgba(77, 127, 226, 0.15);
+    --ax-primary-trans-dark-color: rgba(77, 127, 226, 0.3);
+    --ax-border-color: #c3c3c3;
+    --ax-secondary-color: #313131;
+    --ax-secondary-light-color: #969696;
+    --ax-secondary-dark-color: #1b1b1b;
+}
+
+// ::-webkit-scrollbar {
+//   width: 10px;
+//   @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+//     display: none;
+//   }
+// }
+// ::-webkit-scrollbar-track {
+//   background: #f1f1f1;
+// }
+// ::-webkit-scrollbar-thumb {
+//   background: #616161;
+// }
+// ::-webkit-scrollbar-thumb:hover {
+//   background: #212121;
+// }
+.item-line {
+    margin-bottom: 10;
+    display: flex;
+    align-items: flex-start;
+    .item-line-column {
+        display: flex;
+        flex-direction: column;
+        margin-inline-start: 0.3em;
+        margin-bottom: 0.3em;
+        &>div {
+            display: flex;
+            justify-content: flex-start;
+            text-align: right;
+        }
+    }
+    .item-line-column-full {
+        display: flex;
+        flex-direction: column;
+        margin-inline-start: 0.3em;
+        margin-bottom: 0.3em;
+        flex: 1;
+        &>div {
+            display: flex;
+            justify-content: flex-start;
+            text-align: right;
+        }
+    }
+}
+
+.item-line-header {
+    label {
+        display: flex;
+        align-items: center;
+        color: var(--gray);
+        margin: 0;
+        i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            margin-inline-end: 10px;
+        }
+    }
+}
+
+.ax {
+    &.placeholder {
+        &.inline {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-block-end: 0.5em;
+            >label {
+                flex: 1;
+                padding: 0.5em;
+                background: var(--ax-primary-trans-light-color);
+                -webkit-border-top-right-radius: 4px;
+                -webkit-border-bottom-right-radius: 4px;
+                -moz-border-radius-topright: 4px;
+                -moz-border-radius-bottomright: 4px;
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                i {
+                    margin-inline-end: 0.5em;
+                    color: var(--ax-primary-dark-color);
+                }
+            }
+            >span {
+                flex: 1;
+                padding: 0.5em;
+                background: white;
+                overflow: hidden;
+                border: 1px solid var(--ax-primary-trans-light-color);
+                border-inline-start: none;
+                -webkit-border-top-left-radius: 4px;
+                -webkit-border-bottom-left-radius: 4px;
+                -moz-border-radius-topleft: 4px;
+                -moz-border-radius-bottomleft: 4px;
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        &.block {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            font-size: 1rem;
+            margin-block-end: 0.5em;
+            >label {
+                flex: 1;
+                padding: 0.5em;
+                background: var(--ax-primary-trans-light-color);
+                -webkit-border-top-left-radius: 4px;
+                -webkit-border-top-right-radius: 4px;
+                -moz-border-radius-topleft: 4px;
+                -moz-border-radius-topright: 4px;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                i {
+                    margin-inline-end: 0.5em;
+                    color: var(--ax-primary-dark-color);
+                }
+            }
+            >span {
+                flex: 1;
+                padding: 0.5em;
+                background: white;
+                overflow: hidden;
+                border: 1px solid var(--ax-primary-trans-light-color);
+                -webkit-border-bottom-right-radius: 4px;
+                -webkit-border-bottom-left-radius: 4px;
+                -moz-border-radius-bottomright: 4px;
+                -moz-border-radius-bottomleft: 4px;
+                border-bottom-right-radius: 4px;
+                border-bottom-left-radius: 4px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
+
+.ax {
+    &.link {
+        color: var(--ax-primary-color);
+        text-decoration: none;
+        border-bottom: 0.1em dashed;
+        padding: 0.5em;
+        font-size: 1.2em;
+    }
+}
+
+.col,
+.col-1,
+.col-10,
+.col-11,
+.col-12,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-auto,
+.col-lg,
+.col-lg-1,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-auto,
+.col-md,
+.col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-auto,
+.col-sm,
+.col-sm-1,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-auto,
+.col-xl,
+.col-xl-1,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-auto {
+    padding: 0 calc(var(--ax-size-sm) / 2) !important;
+}
+
+// .ax-card {
+//   background-color: var(--ax-white-color);
+//   border-radius: 8px;
+//   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+//   &.padd {
+//     padding: 0.5em;
+//   }
+// }
+// .content-box {
+//   background-color: var(--ax-gray-trans-dark-color);
+//   height: 100%;
+//   position: relative;
+//   .card-box {
+//     background-color: var(--ax-white-color);
+//     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+//     border-radius: var(--ax-size-border-radius);
+//     padding: 1em;
+//   }
+// }
+// npm
+// .ax.primary {
+//   color: var(--ax-primary-fore-color) !important;
+//   background-color: var(--ax-primary-color) !important;
+// }
+.ax-panel-box-none-shadow {
+    .ax-panel-box {
+        box-shadow: none !important;
+        position: relative;
+        header {
+            border: none !important;
+        }
+        .content {
+            padding-left: 0.3em !important;
+            padding: 0 0.8em;
+        }
+    }
+}
+
+ax-page-content {
+    &.grey-color {
+        .ax-page-content {
+            background-color: var(--ax-gray-trans-dark-color) !important;
+        }
+    }
+}
+
+.ax-custome-box {
+    background-color: var(--ax-white-color) !important;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    border-radius: 8px;
+    padding: 2em 1em;
+}

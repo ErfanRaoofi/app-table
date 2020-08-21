@@ -6,37 +6,37 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./design-modal.page.scss'],
 })
 export class DesignModalPage implements OnInit {
-  ngOnInit(): void {}
   scrollLengh: number;
-  ScrollNewLengh: number;
-  ScrollNewLengh2: number;
-  urls: any[] = [];
+  scrollNewLengh: number;
+  modalScrollNewLengh: number;
+  images: any[] = [];
+  imageCount;
+  slideIndex = 1;
 
   @ViewChild('imageContainer', { read: ElementRef })
   public imageContainer: ElementRef<any>;
 
+  @ViewChild('img', { read: ElementRef }) public img: ElementRef<any>;
+
   constructor(private elementRef: ElementRef) {}
 
-  ngAfterViewInit(): void {
-    this.scrollLengh = this.imageContainer.nativeElement.scrollWidth;
-  }
-
-  onSelectFile(event: any) {
+  onSelectFile(event: any): void {
     if (event.target.files && event.target.files[0]) {
+      this.scrollLengh = this.imageContainer.nativeElement.scrollWidth;
       const filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
         const reader = new FileReader();
 
         reader.onload = (event: any) => {
           //   console.log(event.target.result);
-          this.urls.push({
+          this.images.push({
             id: Math.floor(1000 * Math.random() * 9000),
             src: event.target.result,
           });
           console.log(event);
 
           setTimeout(() => {
-            this.ScrollNewLengh = this.imageContainer.nativeElement.scrollWidth;
+            this.scrollNewLengh = this.imageContainer.nativeElement.scrollWidth;
           }, 0);
         };
 
@@ -45,10 +45,17 @@ export class DesignModalPage implements OnInit {
     }
   }
 
-  removeImage(id) {
-    this.urls = this.urls.filter((c) => c.id !== id);
+  removeImage(id): void {
+    // const b = this.images.filter((e) => e === event);
+    // b.forEach((f) =>
+    //   this.images.splice(
+    //     this.images.findIndex((e) => e === f),
+    //     1
+    //   )
+    // );
+    this.images = this.images.filter((c) => c.id !== id);
     setTimeout(() => {
-      this.ScrollNewLengh = this.imageContainer.nativeElement.scrollWidth;
+      this.scrollNewLengh = this.imageContainer.nativeElement.scrollWidth;
     }, 0);
   }
 
@@ -65,74 +72,32 @@ export class DesignModalPage implements OnInit {
       behavior: 'smooth',
     });
   }
-  imgs: any[] = [
-    {
-      id: 1,
-      src: '../../assets/img/first.jpg',
-    },
-    {
-      id: 2,
-      src: '../../assets/img/second.jpg',
-    },
-    {
-      id: 3,
-      src: '../../assets/img/fifth.jpg',
-    },
-    {
-      id: 4,
-      src: '../../assets/img/first.jpg',
-    },
-    {
-      id: 5,
-      src: '../../assets/img/second.jpg',
-    },
-    {
-      id: 6,
-      src: '../../assets/img/fifth.jpg',
-    },
-    {
-      id: 7,
-      src: '../../assets/img/first.jpg',
-    },
-    {
-      id: 8,
-      src: '../../assets/img/second.jpg',
-    },
-    {
-      id: 9,
-      src: '../../assets/img/fifth.jpg',
-    },
-  ];
+  ngOnInit(): void {}
 
-  imageCount;
-
-  openModal() {
-    debugger;
+  openModal(): void {
     document.getElementById('myModal').style.display = 'block';
-    this.imageCount = this.urls.length;
-    this.ScrollNewLengh2 = this.images.nativeElement.scrollWidth;
+    this.imageCount = this.images.length;
+    this.modalScrollNewLengh = this.img.nativeElement.scrollWidth;
   }
 
-  closeModal() {
+  closeModal(): void {
     document.getElementById('myModal').style.display = 'none';
   }
 
-  slideIndex = 1;
-
-  plusSlides(n) {
+  plusSlides(n): void {
     this.showSlides((this.slideIndex += n));
   }
 
-  currentSlide(n) {
+  currentSlide(n): void {
     this.showSlides((this.slideIndex = n));
   }
 
-  showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName(
+  showSlides(n): void {
+    // const i;
+    const slides = document.getElementsByClassName(
       'mySlides'
     ) as HTMLCollectionOf<HTMLElement>;
-    let dots = document.getElementsByClassName('demo') as HTMLCollectionOf<
+    const dots = document.getElementsByClassName('demo') as HTMLCollectionOf<
       HTMLElement
     >;
     if (n > slides.length) {
@@ -141,27 +106,26 @@ export class DesignModalPage implements OnInit {
     if (n < 1) {
       this.slideIndex = slides.length;
     }
-    for (i = 0; i < slides.length; i++) {
+    for (let i = 0; i < slides.length; i++) {
       slides[i].style.display = 'none';
     }
-    for (i = 0; i < dots.length; i++) {
+    for (let i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(' active', '');
     }
     slides[this.slideIndex - 1].style.display = 'block';
     dots[this.slideIndex - 1].className += ' active';
   }
 
-  @ViewChild('images') images;
   modalScrollRight(): void {
-    this.images.nativeElement.scrollTo({
-      left: this.images.nativeElement.scrollLeft + 320,
+    this.img.nativeElement.scrollTo({
+      left: this.img.nativeElement.scrollLeft + 320,
       behavior: 'smooth',
     });
   }
 
   modalScrollLeft(): void {
-    this.images.nativeElement.scrollTo({
-      left: this.images.nativeElement.scrollLeft - 320,
+    this.img.nativeElement.scrollTo({
+      left: this.img.nativeElement.scrollLeft - 320,
       behavior: 'smooth',
     });
   }
